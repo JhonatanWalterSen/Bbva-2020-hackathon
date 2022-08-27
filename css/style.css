@@ -2,6 +2,8 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Lato', sans-serif;
+
 }
 .header-bbva{
     height: 80px;
@@ -37,5 +39,8 @@ p{
 }
 
 .contenedor-info{
-    width: 30;
+    width: 500px;
+    height: 300px;
+    background-color: #fff;
+    color: #043263;
 }
