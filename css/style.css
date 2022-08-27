@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.header-bbva{
+    height: 80px;
+    width: 100%;
+}
+.header-bbva img{
+    width:  120px;
+}
+.bg-bbva-blue{
+    background-color: #043263;
+}
+img{
+    width: 100%;
+}
+.menu-bbva{
+    gap: 20px;
+}
+p{
+    margin: 0;
+}
+.menu-bbva p a{
+    color: white;
+    text-decoration: none;
+}
+.info{
+    width: 100%;
+    height: 600px;
+    background-color: rgb(151, 147, 147);
+}
+.bg-image-gps{
+    background-image: url("images/fondo.png");
+    width: 100%;
+}
+
+.contenedor-info{
+    width: 30;
+}
