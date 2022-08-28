@@ -2,7 +2,7 @@ let btnLima = document.querySelector('.btn-lima')
 let sectionLima = document.querySelector('.section-lima')
 let distrito = document.querySelector('#distrito');
 
-
+// 
 
 function getProvincias() {
     // http://127.0.0.1:3000
