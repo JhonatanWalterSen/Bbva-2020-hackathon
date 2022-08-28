@@ -12,7 +12,7 @@ const datosBusqueda = {
     distrito : ''
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {    
     mostrarInfo(limaSedes);
 });
 
@@ -29,13 +29,17 @@ function limpiarHTML() {
     }
 }
 
+const myChart = new Chart(
+    document.getElementById('myChart'),
+    config
+  );
+
 function mostrarInfo(limaSedes){
     limpiarHTML();
     const contenedor = document.querySelector('#resultado');
     let hora = new Date()
-    console.log(hora.getHours()+':'+hora.getMinutes());
 
-    console.log(limaSedes);
+    /* console.log(limaSedes); */
     limaSedes.forEach(lima => {
         const { provincia,
 		distrito,
@@ -53,6 +57,7 @@ function mostrarInfo(limaSedes){
         ubiHtml,img} = lima
         const limaHTML = document.createElement('div');
         limaHTML.classList.add('cardHTML')
+        
         limaHTML.innerHTML = `
             <div class="card-distritos">
                 <div class="ditrito-img">
@@ -73,37 +78,51 @@ function mostrarInfo(limaSedes){
                     <p class="derecho">Cuanta con: </p>
                 </div>
 
-                <div class="contenido-detalle">
+                <div class="contenido-detalle tabla-colaboradores">
                     <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col">Sector</th>
                                 <th scope="col">Colaboradores</th>
+                                <th scope="col">Aforo Actual</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
                             <th scope="row">Plataforma</th>
                             <td>${personalPlataformaTrabajando}</td>
+                            <td>${ticketsPlataforma}</td>
                             </tr>
                             <tr>
                             <th scope="row">Ventanilla</th>
                             <td>${personalVentanillasTrabajando}</td>
+                            <td>${ticketsVenanilla}</td>
                             </tr>
                             <tr>
                             <th scope="row">Cajero</th>
                             <td > ${personalCajerosOperativos}</td>
+                            <td > ${sensorPersonasCajero}</td>
 
+                            </tr>
+                            <tr>
+                            <th scope="row"></th>
+                            <td > </td>
+                            <td > ${ticketsPlataforma+ticketsVenanilla+sensorPersonasCajero}</td>
                             </tr>
                         </tbody>
                     </table>
+                </div>    
+                
+                <div class="contenido-detalle">
+                    <div>
+                        <p id="myChart">
+                            <span class="circular-porcentaje ">
+                                ${Math.trunc(((ticketsPlataforma+ticketsVenanilla+sensorPersonasCajero)*100)/AforoTotal)} %
+                            </span>
+                        </p>
+                    </div>
                 </div>
                 
-                <div class="contenido-detalle detalle-btn">
-                    <button type="button" class="btn btn bg-bbva-blue">
-                    Mayor Información
-                    </button>
-                </div> 
             </div>
 
         `;
@@ -136,3 +155,15 @@ function filtrarDistrito(lima) {
     } 
     return lima;
 }
+
+setTimeout(() => {
+    let circular = document.querySelectorAll('.circular-porcentaje') 
+    /* circular.classList.add('verde') */ 
+    console.log(circular); 
+    circular.forEach(value => {
+        console.log(value.textContent);
+        if (value.textContent >= 75) {
+            console.log(vakue);
+        }
+    })
+}, 200);

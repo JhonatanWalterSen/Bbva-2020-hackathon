@@ -268,6 +268,32 @@ border-radius: 0px 0px 25px 25px;
     transition: all .6s;
     font-size: 11px;
 }
+
+.contenido-detalle.tabla-colaboradores {
+
+    margin: auto;
+}
+
+tbody td{
+    text-align: center;
+}
+.circular-porcentaje{
+    padding: 30px;
+    border-radius: 50%;
+    background-color: aquamarine;
+}
+.verde{
+    background-color: green;
+}
+.amarillo{
+    background-color: yellow;
+}
+.rojo{
+    background-color: red;
+}
+p#myChart {
+    margin-bottom: 50px;
+}
 @media  (max-width: 1000px) {
     #resultado{
         display: block !important;
