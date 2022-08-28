@@ -110,21 +110,20 @@ p{
 
 .seleccion-h2{
     text-align: center;
-    margin: 25px 0px;
+    margin: 40px 0px;
     color: #1973B8;
 }
 
 .botones-lima{
     display: flex;
     justify-content: center;
-    margin: 40px 0px;
+    margin: 15px 0px 40px 0px;
 }
 
 .botones-lima a{
     background-color: #1973B8;
     color: white;
     padding: 10px 25px;
-    border-radius: 10px;
     text-align: center;
     text-decoration: none;
     outline: none;
