@@ -3,14 +3,22 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Lato', sans-serif;
-
+    scroll-behavior: smooth;
 }
-.header-bbva{
+.header-bbva,
+.footer-bbva{
     height: 80px;
     width: 100%;
 }
-.header-bbva img{
+.header-bbva img,
+.footer-bbva img{
     width:  120px;
+}
+.footer-bbva{
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+
 }
 .bg-bbva-blue{
     background-color: #043263;
@@ -28,14 +36,19 @@ p{
     color: white;
     text-decoration: none;
 }
+.footer-bbva p{
+    color: white;
+}
 .info{
     width: 100%;
     height: 600px;
     background-color: rgb(151, 147, 147);
 }
 .bg-image-gps{
-    background-image: url("images/fondo.png");
+    background-image: url("../images/fondo.png");
     width: 100%;
+    height: 100%;
+    background-size: cover;
 }
 
 .contenedor-info{
@@ -43,4 +56,96 @@ p{
     height: 300px;
     background-color: #fff;
     color: #043263;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 0 30px;
+
+}
+.primer-titulo{
+    font-size: 29px;
+    font-weight: bold;
+}
+.segundo-titulo{
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.container-info{
+    margin: auto;
+    height: 100%;
+}
+.container-info-general{
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    gap:20px;
+}
+
+.mas{
+    background-color: #1973B8;
+    padding: 10px 20px;
+    color: #fff;
+    text-decoration: none;
+    outline: none;
+    transition: all .4s;
+}
+.mas:hover{
+    transition: all .4s;
+    color: white;
+    background-color: #043263;
+    cursor: pointer;
+}
+
+.card-img{
+    width: 450px;
+}
+.contaier-seleccion{
+    justify-content: space-around;
+}
+
+.seleccion-h2{
+    text-align: center;
+    margin: 25px 0px;
+    color: #1973B8;
+}
+
+.botones-lima{
+    display: flex;
+    justify-content: center;
+    margin: 40px 0px;
+}
+
+.botones-lima a{
+    background-color: #1973B8;
+    color: white;
+    padding: 10px 25px;
+    border-radius: 10px;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    font-size: 22px;
+    transition: all .4s;
+}
+
+.botones-lima a:hover{
+    background-color: #043263;
+    outline: none;
+    transition: all .4s;
+
+}
+
+#mapa{
+    height: 300px;
+  }
+
+.agencia-cercana{
+    text-align: center;
+    font-size: 22px;
+    color: #043263;
+    margin-bottom: 40px;
 }
