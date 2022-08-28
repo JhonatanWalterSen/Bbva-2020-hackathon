@@ -2,6 +2,8 @@ let btnLima = document.querySelector('.btn-lima')
 let sectionLima = document.querySelector('.section-lima')
 let distrito = document.querySelector('#distrito');
 
+
+
 function getProvincias() {
     // http://127.0.0.1:3000
     // https://samsamtechbbva.herokuapp.com
@@ -30,26 +32,54 @@ provincia_select.addEventListener('change', function () {
     getDistritosPorProvincia()
 });
 
+let distrito_select = document.getElementById("distrito");
+
+distrito_select.addEventListener('change', function () {
+    getSedes()
+});
+
 function getDistritosPorProvincia() {
     let provincia_select = document.getElementById("provincia");
     var provincia_value = provincia_select.value;
-    // console.log(provincia_value);
+    if (typeof provincia_value == 'select') return;
+
     axios.post("https://samsamtechbbva.herokuapp.com/Distrito/getDistritoByProv", { prov_id: provincia_value })
         .then(data => {
-            // console.log("DISTRITOS ::", data.data);
             let distritos = data.data
             let distrito_select = document.getElementById("distrito")
+
             removeOptions(distrito_select);
+
             let option = document.createElement('option');
-            option.setAttribute('value', null);
+            option.setAttribute('value', 'select');
             option.appendChild(document.createTextNode("Seleccione"));
             distrito_select.appendChild(option);
+
             distritos.forEach(provincia => {
                 let option = document.createElement('option');
                 option.setAttribute('value', provincia.id_distrito);
                 option.appendChild(document.createTextNode(provincia.nombre));
                 distrito_select.appendChild(option);
             })
+        })
+        .catch(error => {
+            console.log(error);
+        })
+}
+
+
+function getSedes() {
+    let distrito_select = document.getElementById("distrito");
+    var distrito_value = distrito_select.value;
+
+    if (distrito_value == 'select') return;
+    axios.post("https://samsamtechbbva.herokuapp.com/Sede/getSedes", { distrito: distrito_value })
+        // axios.post("https://samsamtechbbva.herokuapp.com/Sede/getSedes", { distrito: 102137 })
+        .then(data => {
+            console.log("SEDES ::", data.data);
+
+            let sedes = data.data
+            mostrarInfo(sedes)
         })
         .catch(error => {
             console.log(error);
@@ -65,6 +95,10 @@ function removeOptions(selectElement) {
 }
 
 btnLima.addEventListener('click', ventanaLima)
+
+var intervalId = window.setInterval(function () {
+    getSedes()
+}, 2000);
 
 function ventanaLima() {
     sectionLima.classList.toggle('activo')
