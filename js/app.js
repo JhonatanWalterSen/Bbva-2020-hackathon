@@ -109,7 +109,7 @@ const datosBusqueda = {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    mostrarInfo(limaSedes);
+    // mostrarInfo(limaSedes);
 });
 
 distrito.addEventListener('input', e => {
@@ -136,6 +136,7 @@ function mostrarInfo(limaSedes) {
             direccion,
             nombre,
             aforo,
+            aforo_max,
             ticketsPlataforma,
             ticketsVenanilla,
             sensorPersonasCajero,
@@ -147,7 +148,7 @@ function mostrarInfo(limaSedes) {
             <div class="card-distritos" >
                 <div class="ditrito-img">
                     <div class="aforo-ofi"><span>${nombre}</div>
-                    ${ubiHtml}   
+                    <img src="https://i.blogs.es/0a0517/google-maps-detalles-nivel-calle/1366_2000.jpg"> 
                     <div class="aforo"><p>CAPACIDAD<p><span>${aforo}</span></div>
                     <div class="aforo-time"><p>Visualizado a las:</p><span>${hora.getHours() + ':' + hora.getMinutes()} pm</span></div>
                 </div>
@@ -163,7 +164,7 @@ function mostrarInfo(limaSedes) {
                     <div>
                         <p id="myChart">
                             <span class="circular-porcentaje ">
-                                ${Math.trunc(((ticketsPlataforma + ticketsVenanilla + sensorPersonasCajero) * 100) / aforo)} %
+                                ${Math.trunc(((aforo / aforo_max) * 100) / 100)} %
                             </span>
                         </p>
                     </div>
