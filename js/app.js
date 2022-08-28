@@ -7,7 +7,7 @@ let distrito = document.querySelector('#distrito');
 function getProvincias() {
     // http://127.0.0.1:3000
     // https://samsamtechbbva.herokuapp.com
-    axios.get("https://samsamtechbbva.herokuapp.com/Provicina/getTProvincias")
+    axios.get("https://samsamtechbbva.herokuapp.com/provincia")
         .then(data => {
             let provincias = data.data
             let provincia_select = document.getElementById("provincia")
@@ -132,16 +132,10 @@ function mostrarInfo(limaSedes) {
 
     // console.log(limaSedes);
     limaSedes.forEach(lima => {
-        const { provincia,
-            distrito,
-            oficina,
+        const {
             direccion,
-            horario,
-            dias,
-            AforoTotal,
-            personalVentanillasTrabajando,
-            personalCajerosOperativos,
-            personalPlataformaTrabajando,
+            nombre,
+            aforo,
             ticketsPlataforma,
             ticketsVenanilla,
             sensorPersonasCajero,
@@ -152,9 +146,9 @@ function mostrarInfo(limaSedes) {
         limaHTML.innerHTML = `
             <div class="card-distritos" >
                 <div class="ditrito-img">
-                    <div class="aforo-ofi"><span>${oficina}</div>
+                    <div class="aforo-ofi"><span>${nombre}</div>
                     ${ubiHtml}   
-                    <div class="aforo"><p>CAPACIDAD<p><span>${AforoTotal}</span></div>
+                    <div class="aforo"><p>CAPACIDAD<p><span>${aforo}</span></div>
                     <div class="aforo-time"><p>Visualizado a las:</p><span>${hora.getHours() + ':' + hora.getMinutes()} pm</span></div>
                 </div>
                 <div class="contenido-detalle">
@@ -166,49 +160,10 @@ function mostrarInfo(limaSedes) {
                 </div>
 
                 <div class="contenido-detalle">
-                    <p class="derecho">Cuenta con: </p>
-                </div>
-
-                <div class="contenido-detalle tabla-colaboradores">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Sector</th>
-                                <th scope="col">Colaboradores</th>
-                                <th scope="col">Aforo Actual</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                            <th scope="row">Plataforma</th>
-                            <td>${personalPlataformaTrabajando}</td>
-                            <td>${ticketsPlataforma}</td>
-                            </tr>
-                            <tr>
-                            <th scope="row">Ventanilla</th>
-                            <td>${personalVentanillasTrabajando}</td>
-                            <td>${ticketsVenanilla}</td>
-                            </tr>
-                            <tr>
-                            <th scope="row">Cajero</th>
-                            <td > ${personalCajerosOperativos}</td>
-                            <td > ${sensorPersonasCajero}</td>
-
-                            </tr>
-                            <tr>
-                            <th scope="row"></th>
-                            <td > </td>
-                            <td > ${ticketsPlataforma + ticketsVenanilla + sensorPersonasCajero}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>    
-                
-                <div class="contenido-detalle">
                     <div>
                         <p id="myChart">
                             <span class="circular-porcentaje ">
-                                ${Math.trunc(((ticketsPlataforma + ticketsVenanilla + sensorPersonasCajero) * 100) / AforoTotal)} %
+                                ${Math.trunc(((ticketsPlataforma + ticketsVenanilla + sensorPersonasCajero) * 100) / aforo)} %
                             </span>
                         </p>
                     </div>
@@ -247,14 +202,14 @@ function filtrarDistrito(lima) {
     return lima;
 }
 
-setTimeout(() => {
-    let circular = document.querySelectorAll('.circular-porcentaje')
-    /* circular.classList.add('verde') */
-    console.log(circular);
-    circular.forEach(value => {
-        console.log(value.textContent);
-        if (value.textContent >= 75) {
-            console.log(vakue);
-        }
-    })
-}, 200);
+// setTimeout(() => {
+//     let circular = document.querySelectorAll('.circular-porcentaje')
+//     /* circular.classList.add('verde') */
+//     // console.log(circular);
+//     circular.forEach(value => {
+//         console.log(value.textContent);
+//         if (value.textContent >= 75) {
+//             // console.log(vakue);
+//         }
+//     })
+// }, 200);

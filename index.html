@@ -79,16 +79,16 @@
                             <div>
                                 <a href="#departamentos">DEPARTAMENTOS</a>
                             </div>
+                            </1div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <p class="agencia-cercana">¿Deseas encontrar una agencia cercana a ti?</p>
-        <p id="Pos" class="agencia-cercana">¿Deseas encontrar una agencia cercana a ti?</p>
-        <p id="PosLink"><a target="_blank"></a></p>
-        <p id="Poslong"><a target="_blank"></a></p>
+            <!-- <p class="agencia-cercana">¿Deseas encontrar una agencia cercana a ti?</p> -->
+            <!-- <p id="Pos" class="agencia-cercana">¿Deseas encontrar una agencia cercana a ti?</p> -->
+            <!-- <p id="PosLink"><a target="_blank"></a></p>
+        <p id="Poslong"><a target="_blank"></a></p> -->
 
     </section>
 
@@ -190,11 +190,11 @@
         });
 
         function geoposOK(pos) {
-            lat = pos.coords.latitude;
-            long = pos.coords.longitude;
-            posElt.textContent = `${lat},${long}`;
-            posLinkElt.href = `https://maps.google.com/?q=${lat},${long}`;
-            posLinkElt.textContent = 'Mostrar tu posición en un mapa';
+            // lat = pos.coords.latitude;
+            // long = pos.coords.longitude;
+            // posElt.textContent = `${lat},${long}`;
+            // posLinkElt.href = `https://maps.google.com/?q=${lat},${long}`;
+            // posLinkElt.textContent = 'Mostrar tu posición en un mapa';
         }
 
         function geoposKO(err) {
