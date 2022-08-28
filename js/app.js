@@ -76,7 +76,7 @@ function getSedes() {
     axios.post("https://samsamtechbbva.herokuapp.com/Sede/getSedes", { distrito: distrito_value })
         // axios.post("https://samsamtechbbva.herokuapp.com/Sede/getSedes", { distrito: 102137 })
         .then(data => {
-            console.log("SEDES ::", data.data);
+            // console.log("SEDES ::", data.data);
 
             let sedes = data.data
             mostrarInfo(sedes)
@@ -130,7 +130,7 @@ function mostrarInfo(limaSedes) {
     const contenedor = document.querySelector('#resultado');
     let hora = new Date()
 
-    console.log(limaSedes);
+    // console.log(limaSedes);
     limaSedes.forEach(lima => {
         const { provincia,
             distrito,
@@ -150,7 +150,7 @@ function mostrarInfo(limaSedes) {
         limaHTML.classList.add('cardHTML')
 
         limaHTML.innerHTML = `
-            <div class="card-distritos">
+            <div class="card-distritos" >
                 <div class="ditrito-img">
                     <div class="aforo-ofi"><span>${oficina}</div>
                     ${ubiHtml}   
@@ -161,12 +161,12 @@ function mostrarInfo(limaSedes) {
                     <p class="text-align-center">Dirección: ${direccion} </p>
                 </div>
                 <div class="contenido-detalle">
-                    <p class="derecho">Horario: ${horario} </p>
-                    <p class="derecho">Días: ${dias} </p>
+                    <p class="derecho">Horario: 9 am. - 6 pm.</p>
+                    <p class="derecho">Días: lunes a viernes </p>
                 </div>
 
                 <div class="contenido-detalle">
-                    <p class="derecho">Cuanta con: </p>
+                    <p class="derecho">Cuenta con: </p>
                 </div>
 
                 <div class="contenido-detalle tabla-colaboradores">
