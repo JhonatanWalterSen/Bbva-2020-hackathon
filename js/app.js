@@ -2,14 +2,76 @@ let btnLima = document.querySelector('.btn-lima')
 let sectionLima = document.querySelector('.section-lima')
 let distrito = document.querySelector('#distrito');
 
+function getProvincias() {
+    // http://127.0.0.1:3000
+    // https://samsamtechbbva.herokuapp.com
+    axios.get("https://samsamtechbbva.herokuapp.com/Provicina/getTProvincias")
+        .then(data => {
+            let provincias = data.data
+            let provincia_select = document.getElementById("provincia")
+
+            provincias.forEach(provincia => {
+                let option = document.createElement('option');
+                option.setAttribute('value', provincia.id_provincia);
+                option.appendChild(document.createTextNode(provincia.nombre));
+                provincia_select.appendChild(option);
+            })
+        })
+        .catch(error => {
+            console.log(error);
+        })
+}
+
+getProvincias();
+
+let provincia_select = document.getElementById("provincia");
+
+provincia_select.addEventListener('change', function () {
+    getDistritosPorProvincia()
+});
+
+function getDistritosPorProvincia() {
+    let provincia_select = document.getElementById("provincia");
+    var provincia_value = provincia_select.value;
+    // console.log(provincia_value);
+    axios.post("https://samsamtechbbva.herokuapp.com/Distrito/getDistritoByProv", { prov_id: provincia_value })
+        .then(data => {
+            // console.log("DISTRITOS ::", data.data);
+            let distritos = data.data
+            let distrito_select = document.getElementById("distrito")
+            removeOptions(distrito_select);
+            let option = document.createElement('option');
+            option.setAttribute('value', null);
+            option.appendChild(document.createTextNode("Seleccione"));
+            distrito_select.appendChild(option);
+            distritos.forEach(provincia => {
+                let option = document.createElement('option');
+                option.setAttribute('value', provincia.id_distrito);
+                option.appendChild(document.createTextNode(provincia.nombre));
+                distrito_select.appendChild(option);
+            })
+        })
+        .catch(error => {
+            console.log(error);
+        })
+}
+
+
+function removeOptions(selectElement) {
+    var i, L = selectElement.options.length - 1;
+    for (i = L; i >= 0; i--) {
+        selectElement.remove(i);
+    }
+}
+
 btnLima.addEventListener('click', ventanaLima)
 
-function ventanaLima () {
+function ventanaLima() {
     sectionLima.classList.toggle('activo')
 }
 
 const datosBusqueda = {
-    distrito : ''
+    distrito: ''
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -24,33 +86,33 @@ distrito.addEventListener('input', e => {
 
 function limpiarHTML() {
     const contenedor = document.querySelector('#resultado');
-    while(contenedor.firstChild) {
+    while (contenedor.firstChild) {
         contenedor.removeChild(contenedor.firstChild);
     }
 }
 
-function mostrarInfo(limaSedes){
+function mostrarInfo(limaSedes) {
     limpiarHTML();
     const contenedor = document.querySelector('#resultado');
     let hora = new Date()
-    console.log(hora.getHours()+':'+hora.getMinutes());
+    console.log(hora.getHours() + ':' + hora.getMinutes());
 
-    console.log(limaSedes);
+    // console.log(limaSedes);
     limaSedes.forEach(lima => {
         const { provincia,
-		distrito,
-		oficina,
-		direccion,
-		horario,
-        dias,
-		AforoTotal,
-		personalVentanillasTrabajando,
-		personalCajerosOperativos,
-        personalPlataformaTrabajando,
-        ticketsPlataforma,
-        ticketsVenanilla,
-        sensorPersonasCajero,
-        ubiHtml,img} = lima
+            distrito,
+            oficina,
+            direccion,
+            horario,
+            dias,
+            AforoTotal,
+            personalVentanillasTrabajando,
+            personalCajerosOperativos,
+            personalPlataformaTrabajando,
+            ticketsPlataforma,
+            ticketsVenanilla,
+            sensorPersonasCajero,
+            ubiHtml, img } = lima
         const limaHTML = document.createElement('div');
         limaHTML.classList.add('cardHTML')
         limaHTML.innerHTML = `
@@ -59,7 +121,7 @@ function mostrarInfo(limaSedes){
                     <div class="aforo-ofi"><span>${oficina}</div>
                     ${ubiHtml}   
                     <div class="aforo"><p>CAPACIDAD<p><span>${AforoTotal}</span></div>
-                    <div class="aforo-time"><p>Visualizado a las:</p><span>${hora.getHours()+':'+hora.getMinutes()} pm</span></div>
+                    <div class="aforo-time"><p>Visualizado a las:</p><span>${hora.getHours() + ':' + hora.getMinutes()} pm</span></div>
                 </div>
                 <div class="contenido-detalle">
                     <p class="text-align-center">Dirección: ${direccion} </p>
@@ -121,18 +183,18 @@ function noResultado() {
 }
 
 function filtrarLima() {
-   const resultado = limaSedes.filter(filtrarDistrito);
-   if(resultado.length){
+    const resultado = limaSedes.filter(filtrarDistrito);
+    if (resultado.length) {
         mostrarInfo(resultado);
-   } else {
-       noResultado();
-   }
+    } else {
+        noResultado();
+    }
 }
 
 
 function filtrarDistrito(lima) {
-    if(datosBusqueda.distrito){
+    if (datosBusqueda.distrito) {
         return lima.distrito === datosBusqueda.distrito;
-    } 
+    }
     return lima;
 }
