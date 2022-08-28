@@ -148,3 +148,136 @@ p{
     color: #043263;
     margin-bottom: 40px;
 }
+.activo{
+    display: flex !important;
+}
+
+
+.u-full-width{
+    color: #043263;
+}
+.section-lima{
+    display: flex;
+    flex-direction: column;
+    background-color: #f4f4f4;
+}
+
+#resultado{
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.card-distritos{
+    width: 100%;
+}
+iframe{
+    width: 100%;
+    height: 300px;
+}
+.ditrito-img{
+    position: relative;
+}
+.aforo{
+    width: 100px;
+    height: 70px;
+    background-color: #043263;
+    color: #f8cd51;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    font-weight: bold;
+    border-radius: 30px 0px 0px 0px;
+    transition: all .6s;
+}
+.aforo-ofi{
+position: absolute;
+right: 25%;
+left: 25%;
+top: 0;
+background: #043263;
+padding: 5px 24px;
+text-align: center;
+border-radius: 0px 0px 25px 25px;
+}
+
+.aforo-ofi span{
+    color: white;
+}
+
+.aforo p{
+    font-size: 14px;
+    font-weight: bold;
+}
+.card-distritos:hover{
+    transform: scale(1.03);
+    transition: all .6s;
+}
+
+.card-distritos{
+    transition: all .6s;
+    background-color: white;
+    box-shadow: 1px 4px 23px -4px rgba(0,0,0,0.47);
+    -webkit-box-shadow: 1px 4px 23px -4px rgba(0,0,0,0.47);
+    -moz-box-shadow: 1px 4px 23px -4px rgba(0,0,0,0.47);
+    margin-bottom: 40px;
+}
+.contenido-detalle{
+    padding: 10px 20px;
+}
+.contenido-detalle p {
+    font-weight: bold;
+    text-align: center;
+}
+
+.derecho{
+    text-align: right;
+}
+.detalle-btn button{
+    color: white;
+    transition: all .6s;
+}
+
+.detalle-btn:hover button{
+    color: #f8cd51;
+    transition: all .6s;
+}
+.contenido-detalle.detalle-btn {
+    text-align: center;
+}
+.cardHTML {
+    width: 45%;
+}
+.aforo-time{
+    width: 100px;
+    height: 40px;
+    background-color: #043263;
+    color: white;
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    font-weight: bold;
+    transition: all .6s;
+    font-size: 11px;
+}
+@media  (max-width: 1000px) {
+    #resultado{
+        display: block !important;
+        align-items: center;
+    }
+    .cardHTML {
+        width: 80%;
+        margin: auto;
+    }
+    .container.d-flex.contaier-seleccion {
+        display: block !important;
+    }
+}
