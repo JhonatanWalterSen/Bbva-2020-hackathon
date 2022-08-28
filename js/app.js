@@ -98,7 +98,7 @@ btnLima.addEventListener('click', ventanaLima)
 
 var intervalId = window.setInterval(function () {
     getSedes()
-}, 2000);
+}, 5000);
 
 function ventanaLima() {
     sectionLima.classList.toggle('activo')
@@ -149,7 +149,7 @@ function mostrarInfo(limaSedes) {
                 <div class="ditrito-img">
                     <div class="aforo-ofi"><span>${nombre}</div>
                     <img src="https://i.blogs.es/0a0517/google-maps-detalles-nivel-calle/1366_2000.jpg"> 
-                    <div class="aforo"><p>CAPACIDAD<p><span>${aforo}</span></div>
+                    <div class="aforo"><p>CAPACIDAD<p><span>${aforo_max}</span></div>
                     <div class="aforo-time"><p>Visualizado a las:</p><span>${hora.getHours() + ':' + hora.getMinutes()} pm</span></div>
                 </div>
                 <div class="contenido-detalle">
@@ -158,6 +158,7 @@ function mostrarInfo(limaSedes) {
                 <div class="contenido-detalle">
                     <p class="derecho">Horario: 9 am. - 6 pm.</p>
                     <p class="derecho">Días: lunes a viernes </p>
+                    <p class="derecho">Aforo actual: ${aforo} </p>
                 </div>
 
                 <div class="contenido-detalle">
