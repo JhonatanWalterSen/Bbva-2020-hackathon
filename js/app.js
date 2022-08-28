@@ -164,7 +164,7 @@ function mostrarInfo(limaSedes) {
                     <div>
                         <p id="myChart">
                             <span class="circular-porcentaje ">
-                                ${Math.trunc(((aforo / aforo_max) * 100) / 100)} %
+                                ${Math.round(((aforo / aforo_max) * 100))} %
                             </span>
                         </p>
                     </div>
