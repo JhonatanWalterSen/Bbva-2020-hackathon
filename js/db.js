@@ -72,7 +72,9 @@ const limaSedes = [
         ubiHtml:'<iframe src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d1450.8181083226925!2d-76.98555907893405!3d-12.092552141865816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1sCALLE%2023%20%23273%20CORPAC%20!5e0!3m2!1ses!2spe!4v1661676020451!5m2!1ses!2spe" width="500" height="500" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
         img: '../images/san-Isidro.webp',
 		latitud: -12.091350605083651, 
-        longitud: -76.98542480570022
+        longitud: -76.98542480570022,
+        aforoActua:29,
+        
     },
     {
 		provincia: 'Lima',
